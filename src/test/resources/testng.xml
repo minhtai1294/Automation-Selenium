@@ -1,0 +1,10 @@
+<suite name="ParallelMethodsSuite" parallel="methods" thread-count="3">
+  <test name="LoginTests">
+    <classes>
+      <class name="com.example.tests.LoginTests"/>
+    </classes>
+  </test>
+</suite>
+<listeners>
+    <listener class-name="com.example.reports.ExtentTestListener" />
+</listeners>
