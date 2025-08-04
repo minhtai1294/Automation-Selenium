@@ -12,6 +12,7 @@ public class ApiEndpoints {
     
     //Localhost Task APIs
     public static final ApiRoute GET_TASKS = new ApiRoute("GET", "/tasks");
+    public static final ApiRoute POST_TASKS = new ApiRoute("POST", "/tasks");
 
     // Auth APIs
     //public static final ApiRoute LOGIN = new ApiRoute("POST", "/auth/login");

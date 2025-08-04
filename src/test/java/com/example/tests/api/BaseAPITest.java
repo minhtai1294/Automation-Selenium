@@ -32,10 +32,9 @@ public class BaseAPITest {
         ThreadContext.clearAll();
     }
 
-    @DataProvider(name = "loginData")
-    public Object[][] loginData() {
-        return new Object[][] {
-            { "mtaihrtnf12@gmail.com", "12345678Ac!" }
+    @DataProvider(name = "randomeTaskName")
+    public Object[] loginData() {
+            return new Object[] {"Random Task " + System.currentTimeMillis()}; 
         };
-    }
+    
 }

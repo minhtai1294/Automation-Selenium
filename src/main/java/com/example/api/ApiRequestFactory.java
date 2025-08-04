@@ -82,6 +82,7 @@ public class ApiRequestFactory {
     // Raw method + path
     public Response call(String method, String endpoint) {
         RequestSpecification request = build();
+        log.info("Calling API: \n" + toCurl(method, API_BASE_URL + endpoint));
 
         switch (method.toUpperCase()) {
             case "GET":

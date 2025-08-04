@@ -4,5 +4,6 @@ public enum TestProperties {
     API_BASE_URL,
     ENV,
     TIMEOUT,
-    BROWSER;
+    BROWSER,
+    API_TOKEN;
 }
