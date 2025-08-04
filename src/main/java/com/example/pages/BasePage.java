@@ -1,7 +1,8 @@
 package com.example.pages;
 
-import com.example.utils.DriverFactory;
 import com.example.utils.ElementActions;
+import com.example.web.DriverFactory;
+
 import org.openqa.selenium.WebDriver;
 
 public class BasePage {

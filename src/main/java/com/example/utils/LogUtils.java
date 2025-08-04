@@ -6,8 +6,8 @@ import com.example.reports.ExtentTestListener;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class LogUntils {
-    private static final Logger log = LogManager.getLogger(LogUntils.class);
+public class LogUtils {
+    private static final Logger log = LogManager.getLogger(LogUtils.class);
 
     private static ExtentTest getExtentTest() {
         return ExtentTestListener.getTest(); // expose this as public

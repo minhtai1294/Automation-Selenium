@@ -1,4 +1,4 @@
-package com.example.utils;
+package com.example.web;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;

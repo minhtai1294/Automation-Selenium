@@ -1,7 +1,7 @@
-package com.example.tests;
+package com.example.tests.web;
 
-import com.example.utils.DriverFactory;
-import com.example.utils.LogUntils;
+import com.example.utils.LogUtils;
+import com.example.web.DriverFactory;
 
 import java.lang.reflect.Method;
 
@@ -13,9 +13,9 @@ import org.testng.annotations.Listeners;
 
 @Listeners(com.example.reports.ExtentTestListener.class)
 public class BaseTest {
-    public static ThreadLocal<LogUntils> log = new ThreadLocal<>();
+    public static ThreadLocal<LogUtils> log = new ThreadLocal<>();
 
-    public LogUntils log() {
+    public LogUtils log() {
         return log.get();
     }
 
@@ -23,7 +23,7 @@ public class BaseTest {
     public void setup(Method method) {
         String testName = method.getName(); // or use result.getMethod().getMethodName()
         ThreadContext.put("testName", testName);
-        log.set(new LogUntils());
+        log.set(new LogUtils());
         log().info("===== Test started: " + method.getName() + " =====");
         DriverFactory.init();
     }

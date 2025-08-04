@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.example.web.DriverFactory;
+
 import java.time.Duration;
 
 public class WaitUtils {
@@ -46,5 +48,14 @@ public class WaitUtils {
         WebDriver driver = DriverFactory.getDriver();
         return new WebDriverWait(driver, Duration.ofSeconds(DEFAULT_TIMEOUT))
                 .until(ExpectedConditions.presenceOfElementLocated(locator));
+    }
+
+    public static void waitForSeconds(int seconds) {
+        try {
+            Thread.sleep(seconds * 1000);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            throw new RuntimeException("Thread was interrupted while waiting", e);
+        }
     }
 }

@@ -8,7 +8,8 @@ import io.restassured.response.Response;
 import java.util.Map;
 
 import com.example.api.constants.ApiRoute;
-import com.example.utils.LogUntils;
+import com.example.configs.*;
+import com.example.utils.LogUtils;
 
 public class ApiRequestFactory {
 
@@ -16,12 +17,16 @@ public class ApiRequestFactory {
     private Object body;
     private Map<String, String> headers;
     private Map<String, Object> queryParams;
-    LogUntils log = new LogUntils();
+    LogUtils log = new LogUtils();
 
-    private static final String API_BASE_URL = System.getenv("API_BASE_URL") != null ? System.getenv("API_BASE_URL")
+    private String API_BASE_URL = ConfigLoader.get(TestProperties.API_BASE_URL.toString()) != null ? ConfigLoader.get(TestProperties.API_BASE_URL.toString())
             : "https://pokeapi.co";
 
-    public ApiRequestFactory withToken(String token) {
+    public void setBaseUrl(String baseUrl) {
+        API_BASE_URL = baseUrl;
+    }
+    
+            public ApiRequestFactory withToken(String token) {
         this.token = token;
         return this;
     }
@@ -112,7 +117,7 @@ public class ApiRequestFactory {
         return curl.toString();
     }
 
-    public static String getBaseUrl() {
+    public String getBaseUrl() {
         return API_BASE_URL;
     }
 }

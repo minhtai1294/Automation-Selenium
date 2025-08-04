@@ -1,4 +1,4 @@
-package com.example.tests;
+package com.example.tests.web;
 
 import org.testng.annotations.Test;
 
