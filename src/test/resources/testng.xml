@@ -1,7 +1,7 @@
 <suite name="ParallelMethodsSuite" parallel="methods" thread-count="3">
   <test name="LoginTests">
     <classes>
-      <class name="com.example.tests.LoginTests"/>
+      <class name="com.example.tests.web.LoginTest"/>
     </classes>
   </test>
 </suite>
