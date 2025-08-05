@@ -10,7 +10,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Listeners;
 
-@Listeners(com.example.reports.ExtentTestListener.class)
+//@Listeners(com.example.reports.ExtentTestListener.class)
 public class BaseAPITest {
     public static ThreadLocal<LogUtils> log = new ThreadLocal<>();
 
