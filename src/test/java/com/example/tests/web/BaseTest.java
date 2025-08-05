@@ -35,7 +35,7 @@ public class BaseTest {
         DriverFactory.quit();
     }
 
-    @DataProvider(name = "loginData")
+    @DataProvider(name = "loginData", parallel = true)
     public Object[][] loginData() {
         return new Object[][] {
             { "mtaihrtnf12@gmail.com", "12345678Ac!" }
