@@ -113,6 +113,7 @@
           <suiteXmlFiles>
             <suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
           </suiteXmlFiles>
+          <disableXmlReport>true</disableXmlReport>
         </configuration>
       </plugin>
     </plugins>
