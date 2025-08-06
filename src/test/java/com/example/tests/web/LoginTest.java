@@ -14,40 +14,40 @@ public class LoginTest extends BaseTest {
         HomePage homePage = new HomePage();
         LoginPage loginPage = new LoginPage();
 
-        log().info("111");
+        log1().info("111");
 
-        log().info("Navigating to login page");
+        log1().info("Navigating to login page");
         homePage.navigateToLogin();
 
-        log().info("Logging in with email: " + email);
+        log1().info("Logging in with email: " + email);
         loginPage.login(email, password);
 
-        log().info("Verify login successful");
+        log1().info("Verify login successful");
         loginPage.verifyLoginSuccess();
     }
 
     // @Test(dataProvider = "loginData", dependsOnMethods = "testLogin1")
     // public void testLogin2(String email, String password) {
-    //     log().info("222");
+    //     log1().info("222");
     // }
 
     // @Test(dataProvider = "loginData", dependsOnMethods = "testLogin2")
     // public void testLogin3(String email, String password) {
-    //     log().info("333");
+    //     log1().info("333");
     // }
 
     // @Test(dataProvider = "loginData", dependsOnMethods = "testLogin3")
     // public void testLogin4(String email, String password) {
-    //     log().info("444");
+    //     log1().info("444");
     // }
 
     @Test(dataProvider = "loginData")
     public void testLogin5(String email, String password) {
-        log().info("555");
+        log1().info("555");
     }
 
     @Test(dataProvider = "loginData")
     public void testLogin6(String email, String password) {
-        log().info("666");
+        log1().info("666");
     }
 }
