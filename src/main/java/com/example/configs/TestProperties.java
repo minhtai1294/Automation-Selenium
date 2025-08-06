@@ -5,5 +5,7 @@ public enum TestProperties {
     ENV,
     TIMEOUT,
     BROWSER,
-    API_TOKEN;
+    API_TOKEN,
+    IS_HEADLESS,
+    EXECUTION_TYPE;
 }

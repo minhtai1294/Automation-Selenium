@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.example.configs.TestProperties;
-import com.example.utils.ConfigLoader;
+import com.example.configs.ConfigLoader;
 
 public class DefaultHeaders {
 

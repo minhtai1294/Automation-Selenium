@@ -2,6 +2,8 @@ package com.example.tests.web;
 
 import org.testng.annotations.Test;
 
+import com.example.configs.ConfigLoader;
+import com.example.configs.TestProperties;
 import com.example.pages.HomePage;
 import com.example.pages.LoginPage;
 
@@ -13,6 +15,8 @@ public class LoginTest extends BaseTest {
 
         HomePage homePage = new HomePage();
         LoginPage loginPage = new LoginPage();
+
+        String test = ConfigLoader.getOrDefault(TestProperties.EXECUTION_TYPE.toString(), "chrome");
 
         log1().info("111");
 
