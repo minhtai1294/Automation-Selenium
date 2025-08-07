@@ -6,6 +6,7 @@ import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.logging.Logger;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -38,6 +39,13 @@ public class DriverFactory {
 
         switch (browser.toLowerCase()) {
             case "chrome":
+                Logger log = Logger.getLogger(DriverFactory.class.getName());
+                log.info("TEst BROWSER: " + browser);
+                log.info("TEst EXECUTION: " + execution);
+                log.info("TEst IS_HEADLESS: " + isHeadless);
+                log.info("TEst HUB_URL: " + hubUrl);
+                log.info("TEst BASE_URL: " + BASE_URL);
+        
                 ChromeOptions chromeOptions = new ChromeOptions();
                 chromeOptions.setAcceptInsecureCerts(IS_ACCEPT_INSECURE_CERTS);
                 chromeOptions.setAcceptInsecureCerts(true);
