@@ -19,7 +19,7 @@ import com.example.configs.TestProperties;
 
 public class DriverFactory {
     private static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
-    private static final String BASE_URL = "https://opencart.abstracta.us";
+    private static final String BASE_URL = ConfigLoader.getOrDefault(TestProperties.BASE_URL.toString(), "http://localhost:8080");
     private static final boolean IS_ACCEPT_INSECURE_CERTS = true; // temporary solution to handle insecure certs
 
     public static WebDriver getDriver() {
@@ -27,10 +27,11 @@ public class DriverFactory {
     }
 
     public static void init() {
-        String browser = ConfigLoader.getOrDefault(TestProperties.BROWSER.toString(), "chrome"); // default to chrome
-        String execution = ConfigLoader.getOrDefault(TestProperties.EXECUTION_TYPE.toString(), "local"); // default to
-                                                                                                         // local
-        String headless = ConfigLoader.getOrDefault(TestProperties.IS_HEADLESS.toString(), "true"); // default to true
+        String browser = ConfigLoader.getOrDefault(TestProperties.BROWSER.toString(), "chrome"); 
+        String execution = ConfigLoader.getOrDefault(TestProperties.EXECUTION_TYPE.toString(), "local");                                                                                                   
+        String headless = ConfigLoader.getOrDefault(TestProperties.IS_HEADLESS.toString(), "true");
+        String hubUrl = ConfigLoader.getOrDefault(TestProperties.HUB_URL.toString(), "http://localhost:4444/wd/hub");
+
 
         boolean isRemote = execution.equalsIgnoreCase("remote");
         boolean isHeadless = Boolean.parseBoolean(headless);
@@ -49,7 +50,7 @@ public class DriverFactory {
 
                 if (isRemote) {
                     try {
-                        driver.set(new RemoteWebDriver(new URI("http://localhost:4444/wd/hub").toURL(), chromeOptions));
+                        driver.set(new RemoteWebDriver(new URI(hubUrl).toURL(), chromeOptions));
                     } catch (URISyntaxException | MalformedURLException e) {
                         throw new RuntimeException("Invalid Selenium Grid URL", e);
                     }

@@ -1,8 +1,5 @@
 package com.example.tests.web;
 
-import com.example.utils.LogUtils;
-import com.example.web.DriverFactory;
-
 import java.lang.reflect.Method;
 
 import org.apache.logging.log4j.LogManager;
@@ -11,7 +8,8 @@ import org.apache.logging.log4j.ThreadContext;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
-import org.testng.annotations.Listeners;
+
+import com.example.web.DriverFactory;
 
 //@Listeners(com.example.reports.ExtentTestListener.class)
 public class BaseTest {

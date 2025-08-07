@@ -113,6 +113,16 @@
           <suiteXmlFiles>
             <suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
           </suiteXmlFiles>
+          <systemPropertyVariables>
+            <API_BASE_URL>${env.API_BASE_URL}</API_BASE_URL>
+            <BASE_URL>${env.BASE_URL}</BASE_URL>
+            <TEST_ENVIRONMENT>${env.TEST_ENVIRONMENT}</TEST_ENVIRONMENT>
+            <TIMEOUT>${env.TIMEOUT}</TIMEOUT>
+            <BROWSER>${env.BROWSER}</BROWSER>
+            <EXECUTION_TYPE>${env.EXECUTION_TYPE}</EXECUTION_TYPE>
+            <IS_HEADLESS>${env.IS_HEADLESS}</IS_HEADLESS>
+            <HUB_URL>${env.HUB_URL}</HUB_URL>
+        </systemPropertyVariables>
         </configuration>
       </plugin>
     </plugins>
