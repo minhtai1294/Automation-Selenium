@@ -13,7 +13,7 @@ public class LoginTest extends BaseTest {
         HomePage homePage = new HomePage();
         LoginPage loginPage = new LoginPage();
 
-        log1().info("111");
+        log1().info("aaa111");
 
         log1().info("Navigating to login page");
         homePage.navigateToLogin();
