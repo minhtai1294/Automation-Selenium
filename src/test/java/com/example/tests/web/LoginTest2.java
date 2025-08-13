@@ -4,7 +4,7 @@ import org.testng.annotations.Test;
 import com.example.pages.HomePage;
 import com.example.pages.LoginPage;
 
-public class LoginTest extends BaseTest {
+public class LoginTest2 extends BaseTest {
     // test logic
 
     @Test(dataProvider = "loginData")
@@ -27,17 +27,17 @@ public class LoginTest extends BaseTest {
 
     // @Test(dataProvider = "loginData", dependsOnMethods = "testLogin1")
     // public void testLogin2(String email, String password) {
-    //     log1().info("222");
+    //     log().info("222");
     // }
 
     // @Test(dataProvider = "loginData", dependsOnMethods = "testLogin2")
     // public void testLogin3(String email, String password) {
-    //     log1().info("333");
+    //     log().info("333");
     // }
 
     // @Test(dataProvider = "loginData", dependsOnMethods = "testLogin3")
     // public void testLogin4(String email, String password) {
-    //     log1().info("444");
+    //     log().info("444");
     // }
 
     @Test(dataProvider = "loginData")
