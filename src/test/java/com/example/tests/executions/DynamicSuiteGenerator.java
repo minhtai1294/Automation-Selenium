@@ -26,11 +26,10 @@ public class DynamicSuiteGenerator {
         // ✅ Read filters from environment variables
         String suiteFilter = ConfigLoader.get("SUITE_NAME"); // e.g., "Login"
         String platformFilter = ConfigLoader.get("PLATFORM"); // e.g., "web"
-        String featureFiter = ConfigLoader.get("FEATURE"); // e.g., "LoginFeature"
-        String testFilePath = "src\\test\\resources\\dynamic-testng.xml";
-        boolean featureMatch = false;
+        String featureFilter = ConfigLoader.get("FEATURE"); // e.g., "LoginFeature"
+        String testngFilePath = "src\\test\\resources\\dynamic-testng.xml";
+        String basePath = "src/test/java/com/example/tests/modules/";
         List<XmlClass> xmlClasses = new ArrayList<>();
-        String className;
 
         if (suiteFilter == null)
             suiteFilter = "ALL";
@@ -50,18 +49,34 @@ public class DynamicSuiteGenerator {
         test.setName("DynamicGeneratedTests");
 
         // ✅ Scan test package
-        String basePackage = "com.example.tests.modules." + suiteFilter.toLowerCase() + "."
-                + platformFilter.toLowerCase();
-        String basePath = "src/test/java/" + basePackage.replace(".", "/");
-        File folder = new File(basePath);
+        // String basePackage = "com.example.tests.modules." + suiteFilter.toLowerCase()
+        // + "." + platformFilter.toLowerCase();
+        String testModulePath = basePath + suiteFilter.toLowerCase() + "/" + platformFilter.toLowerCase();
+        File testFolder = new File(testModulePath);
+        if (!testFolder.exists()) {
+            throw new RuntimeException("Test folder not found: " + testModulePath);
+        }
+        List<File> javaFiles = new ArrayList<>();
+        collectJavaFilesInFolderAndItsSubFolders(testFolder, javaFiles);
+        collectTestClassesAndMethodsByFeatureName(javaFiles, featureFilter, xmlClasses);
+        test.setXmlClasses(xmlClasses);
 
-        if (!folder.exists()) {
-            throw new RuntimeException("Test folder not found: " + basePath);
+        // ✅ Write testng.xml
+        try (FileWriter writer = new FileWriter(testngFilePath)) {
+            writer.write(suite.toXml());
         }
 
-        List<File> javaFiles = new ArrayList<>();
-        collectJavaFiles(folder, javaFiles);
+        log.info("✅ dynamic-testng.xml generated successfully!");
 
+        TestNG testng = new TestNG();
+        testng.setTestSuites(Collections.singletonList(testngFilePath));
+        testng.run();
+    }
+
+    private static void collectTestClassesAndMethodsByFeatureName(List<File> javaFiles, String featureFilter,
+            List<XmlClass> xmlClasses) throws ClassNotFoundException {
+        boolean featureMatch = false;
+        String className;
         for (File file : javaFiles) {
             String relativePath = file.getPath().replace("src\\test\\java\\", "").replace(File.separator, ".");
             className = relativePath.substring(0, relativePath.length() - 5); // remove ".java"
@@ -73,7 +88,7 @@ public class DynamicSuiteGenerator {
                 if (method.isAnnotationPresent(TestMeta.class)) {
                     TestMeta meta = method.getAnnotation(TestMeta.class);
 
-                    featureMatch = featureFiter.equals("ALL") || featureFiter.equalsIgnoreCase(meta.feature());
+                    featureMatch = featureFilter.equals("ALL") || featureFilter.equalsIgnoreCase(meta.feature());
 
                     if (featureMatch) {
                         xmlClass.getIncludedMethods().add(new XmlInclude(method.getName()));
@@ -85,25 +100,12 @@ public class DynamicSuiteGenerator {
                 xmlClasses.add(xmlClass);
             }
         }
-
-        test.setXmlClasses(xmlClasses);
-
-        // ✅ Write testng.xml
-        try (FileWriter writer = new FileWriter(testFilePath)) {
-            writer.write(suite.toXml());
-        }
-
-        log.info("✅ dynamic-testng.xml generated successfully!");
-
-        TestNG testng = new TestNG();
-        testng.setTestSuites(Collections.singletonList(testFilePath));
-        testng.run();
     }
 
-    private static void collectJavaFiles(File folder, List<File> result) {
+    private static void collectJavaFilesInFolderAndItsSubFolders(File folder, List<File> result) {
         for (File file : folder.listFiles()) {
             if (file.isDirectory()) {
-                collectJavaFiles(file, result);
+                collectJavaFilesInFolderAndItsSubFolders(file, result);
             } else if (file.isFile() && file.getName().endsWith(".java")) {
                 result.add(file);
             }
