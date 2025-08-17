@@ -125,6 +125,24 @@
         </systemPropertyVariables>
         </configuration>
       </plugin>
+
+      <plugin>
+    <groupId>org.codehaus.mojo</groupId>
+    <artifactId>exec-maven-plugin</artifactId>
+    <version>3.1.0</version>
+    <executions>
+        <execution>
+            <id>generate-dynamic-suite</id>
+            <phase>generate-test-resources</phase>
+            <goals>
+                <goal>java</goal>
+            </goals>
+            <configuration>
+                <mainClass>your.package.DynamicSuiteGenerator</mainClass>
+            </configuration>
+        </execution>
+    </executions>
+</plugin>
     </plugins>
   </build>
 </project>

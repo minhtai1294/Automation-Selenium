@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="4" total="6" passed="2" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2025-08-18T01:20:37 ICT" name="DynamicSuite" finished-at="2025-08-18T01:20:53 ICT" duration-ms="16285">
+    <groups>
+    </groups>
+    <test started-at="2025-08-18T01:20:37 ICT" name="DynamicGeneratedTests" finished-at="2025-08-18T01:20:53 ICT" duration-ms="16285">
+      <class name="com.example.tests.modules.login.web.loginTest2.LoginTest2">
+        <test-method is-config="true" signature="setup(java.lang.reflect.Method)[pri:0, instance:com.example.tests.modules.login.web.loginTest2.LoginTest2@1ca25c47]" started-at="2025-08-18T01:20:37 ICT" name="setup" finished-at="2025-08-18T01:20:49 ICT" duration-ms="12099" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.example.tests.modules.login.web.loginTest2.LoginTest2.testLogin1(java.lang.String,java.lang.String)]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="testLogin1(java.lang.String,java.lang.String)[pri:0, instance:com.example.tests.modules.login.web.loginTest2.LoginTest2@1ca25c47]" started-at="2025-08-18T01:20:49 ICT" name="testLogin1" data-provider="loginData" finished-at="2025-08-18T01:20:52 ICT" duration-ms="3628" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[mtaihrtnf12@gmail.com]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[12345678Ac!]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testLogin1 -->
+        <test-method is-config="true" signature="teardown(java.lang.reflect.Method)[pri:0, instance:com.example.tests.modules.login.web.loginTest2.LoginTest2@1ca25c47]" started-at="2025-08-18T01:20:52 ICT" name="teardown" finished-at="2025-08-18T01:20:53 ICT" duration-ms="456" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.example.tests.modules.login.web.loginTest2.LoginTest2.testLogin1(java.lang.String,java.lang.String)]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- teardown -->
+      </class> <!-- com.example.tests.modules.login.web.loginTest2.LoginTest2 -->
+      <class name="com.example.tests.modules.login.web.loginTest.LoginTest">
+        <test-method is-config="true" signature="setup(java.lang.reflect.Method)[pri:0, instance:com.example.tests.modules.login.web.loginTest.LoginTest@3d08f3f5]" started-at="2025-08-18T01:20:37 ICT" name="setup" finished-at="2025-08-18T01:20:46 ICT" duration-ms="9805" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.example.tests.modules.login.web.loginTest.LoginTest.testLogin1(java.lang.String,java.lang.String)]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="testLogin1(java.lang.String,java.lang.String)[pri:0, instance:com.example.tests.modules.login.web.loginTest.LoginTest@3d08f3f5]" started-at="2025-08-18T01:20:46 ICT" name="testLogin1" data-provider="loginData" finished-at="2025-08-18T01:20:52 ICT" duration-ms="5979" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[mtaihrtnf12@gmail.com]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[12345678Ac!]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testLogin1 -->
+        <test-method is-config="true" signature="teardown(java.lang.reflect.Method)[pri:0, instance:com.example.tests.modules.login.web.loginTest.LoginTest@3d08f3f5]" started-at="2025-08-18T01:20:52 ICT" name="teardown" finished-at="2025-08-18T01:20:53 ICT" duration-ms="397" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.example.tests.modules.login.web.loginTest.LoginTest.testLogin1(java.lang.String,java.lang.String)]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- teardown -->
+      </class> <!-- com.example.tests.modules.login.web.loginTest.LoginTest -->
+    </test> <!-- DynamicGeneratedTests -->
+  </suite> <!-- DynamicSuite -->
+</testng-results>
