@@ -45,11 +45,13 @@ public class LoginTest2 extends BaseTest {
     // }
 
     @Test(dataProvider = "loginData")
+    @TestMeta(feature = "Login")
     public void testLogin5(String email, String password) {
         log().info("555");
     }
 
     @Test(dataProvider = "loginData")
+    @TestMeta(feature = "Login")
     public void testLogin6(String email, String password) {
         log().info("666");
     }
