@@ -27,7 +27,7 @@ public class DynamicSuiteGenerator {
         String suiteFilter = ConfigLoader.get("SUITE_NAME"); // e.g., "Login"
         String platformFilter = ConfigLoader.get("PLATFORM"); // e.g., "web"
         String featureFilter = ConfigLoader.get("FEATURE"); // e.g., "LoginFeature"
-        String testngFilePath = "src\\test\\resources\\testng.xml";
+        String testngFilePath = "src\\test\\resources\\dynamic-testng.xml";
         String basePath = "src/test/java/com/example/tests/modules/";
         List<XmlClass> xmlClasses = new ArrayList<>();
 
