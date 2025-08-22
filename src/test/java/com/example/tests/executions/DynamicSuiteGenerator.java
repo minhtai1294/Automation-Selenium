@@ -67,10 +67,6 @@ public class DynamicSuiteGenerator {
         }
 
         log.info("✅ dynamic-testng.xml generated successfully!");
-
-        TestNG testng = new TestNG();
-        testng.setTestSuites(Collections.singletonList(testngFilePath));
-        testng.run();
     }
 
     private static void collectTestClassesAndMethodsByFeatureName(List<File> javaFiles, String featureFilter,
