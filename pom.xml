@@ -68,18 +68,12 @@
       <artifactId>ApacheJMeter_core</artifactId>
       <version>5.6.3</version>
     </dependency>
+    
     <!-- JMeter Java Dependency -->
     <dependency>
       <groupId>org.apache.jmeter</groupId>
       <artifactId>ApacheJMeter_java</artifactId>
       <version>5.6.3</version>
-    </dependency>
-
-    <!-- ExtentReports for export report -->
-    <dependency>
-      <groupId>com.aventstack</groupId>
-      <artifactId>extentreports</artifactId>
-      <version>5.1.1</version>
     </dependency>
 
     <!-- RestAssured for API test -->
