@@ -65,7 +65,7 @@ Test results and reports will be generated in the `test-output/` directory. Open
 
 ## Logging
 
-Logging is configured via Log4j. You can adjust logging settings in `src/test/resources/log4j.properties`.
+Logging is configured via Log4j (org.apache.logging.log4j). You can adjust logging settings in `src/test/resources/log4j.xml`.
 
 ## Custom Utilities
 
