@@ -23,7 +23,7 @@ public class DynamicSuiteGenerator {
         String featureFilter = ConfigLoader.get(TestProperties.FEATURE.toString());
 
         // ✅ Cross-platform safe paths
-        String testngFilePath = Paths.get("src", "test", "resources", "dynamic-testng.xml").toString();
+        String testngFilePath = Paths.get("src", "test", "resources", "testng.xml").toString();
         String basePath = Paths.get("src", "test", "java", "com", "example", "modules").toString() + File.separator;
 
         List<XmlClass> xmlClasses = new ArrayList<>();
