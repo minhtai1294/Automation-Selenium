@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite thread-count="3" parallel="classes" name="DynamicSuite">
-  <test thread-count="3" parallel="classes" name="DynamicGeneratedTests">
+<suite thread-count="3" parallel="classes" name="DynamicSuiteAAAAAAA">
+  <test thread-count="3" parallel="classes" name="DynamicGeneratedTestsAAAAAAA">
     <classes>
       <class name="com.example.tests.modules.login.web.loginTest.LoginTest">
         <methods>
@@ -17,4 +17,7 @@
       </class> <!-- com.example.tests.modules.login.web.loginTest2.LoginTest2 -->
     </classes>
   </test> <!-- DynamicGeneratedTests -->
+  <listeners>
+    <listener class-name="com.example.listeners.SuiteLogger"/>
+  </listeners>
 </suite> <!-- DynamicSuite -->

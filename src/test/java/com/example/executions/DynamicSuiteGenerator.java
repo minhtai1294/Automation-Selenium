@@ -34,6 +34,7 @@ public class DynamicSuiteGenerator {
             platformFilter = "ALL";
 
         XmlSuite suite = new XmlSuite();
+        suite.addListener("com.example.listeners.SuiteLogger"); // ✅ Add listener for logging
         suite.setName("DynamicSuite");
         suite.setParallel(XmlSuite.ParallelMode.CLASSES);
         suite.setThreadCount(3);

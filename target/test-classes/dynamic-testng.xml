@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite thread-count="3" parallel="classes" name="DynamicSuite">
+  <listeners>
+    <listener class-name="com.example.listeners.SuiteLogger"/>
+  </listeners>
   <test thread-count="3" parallel="classes" name="DynamicGeneratedTests">
     <classes>
       <class name="com.example.modules.login.web.loginTest.LoginTest">
@@ -10,9 +13,9 @@
       </class> <!-- com.example.modules.login.web.loginTest.LoginTest -->
       <class name="com.example.modules.login.web.loginTest2.LoginTest2">
         <methods>
-          <include name="testLogin5"/>
           <include name="testLogin6"/>
           <include name="testLogin1"/>
+          <include name="testLogin5"/>
         </methods>
       </class> <!-- com.example.modules.login.web.loginTest2.LoginTest2 -->
     </classes>
