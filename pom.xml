@@ -123,6 +123,9 @@
             <IS_HEADLESS>${env.IS_HEADLESS}</IS_HEADLESS>
             <HUB_URL>${env.HUB_URL}</HUB_URL>
         </systemPropertyVariables>
+        <debugForkedProcess>true</debugForkedProcess>
+        <redirectTestOutputToFile>false</redirectTestOutputToFile>
+        <useFile>false</useFile>
         </configuration>
       </plugin>
 
