@@ -3,6 +3,7 @@ package com.example.modules.login.web.loginTest2;
 import org.testng.annotations.Test;
 
 import com.example.base_test.BaseTest;
+import com.example.executions.TestMeta;
 import com.example.pages.HomePage;
 import com.example.pages.LoginPage;
 
@@ -10,15 +11,13 @@ public class LoginTest3 extends BaseTest {
     // test logic
 
     @Test(dataProvider = "loginData")
+    @TestMeta(feature = "Login")
     public void testLogin1(String email, String password) {
 
         HomePage homePage = new HomePage();
         LoginPage loginPage = new LoginPage();
 
         log.info("aaa111");
-
-        log.info("Navigating to login page");
-        homePage.navigateToLogin();
 
         log.info("Logging in with email: " + email);
         loginPage.login(email, password);
