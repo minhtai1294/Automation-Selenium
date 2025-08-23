@@ -10,9 +10,9 @@
       </class> <!-- com.example.modules.login.web.loginTest.LoginTest -->
       <class name="com.example.modules.login.web.loginTest2.LoginTest2">
         <methods>
-          <include name="testLogin1"/>
-          <include name="testLogin6"/>
           <include name="testLogin5"/>
+          <include name="testLogin6"/>
+          <include name="testLogin1"/>
         </methods>
       </class> <!-- com.example.modules.login.web.loginTest2.LoginTest2 -->
     </classes>

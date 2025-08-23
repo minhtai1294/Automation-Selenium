@@ -3,11 +3,10 @@ package com.example.executions;
 import java.io.File;
 import java.io.FileWriter;
 import java.lang.reflect.Method;
+import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
-import org.testng.TestNG;
 import org.testng.xml.XmlClass;
 import org.testng.xml.XmlInclude;
 import org.testng.xml.XmlSuite;
@@ -15,20 +14,18 @@ import org.testng.xml.XmlTest;
 
 import com.example.configs.ConfigLoader;
 import com.example.configs.TestProperties;
-import com.example.utils.LogUtils;
 
-/**
- * Dynamically builds testng.xml based on env vars and @TestMeta annotation.
- */
 public class DynamicSuiteGenerator {
 
     public static void main(String[] args) throws Exception {
-        // ✅ Read filters from environment variables
-        String suiteFilter = ConfigLoader.get(TestProperties.SUITE_NAME.toString()); // e.g., "Login"
-        String platformFilter = ConfigLoader.get(TestProperties.PLATFORM.toString()); // e.g., "web"
-        String featureFilter = ConfigLoader.get(TestProperties.FEATURE.toString()); // e.g., "LoginFeature"
-        String testngFilePath = "src\\test\\resources\\dynamic-testng.xml";
-        String basePath = "com/example/modules/";
+        String suiteFilter = ConfigLoader.get(TestProperties.SUITE_NAME.toString());
+        String platformFilter = ConfigLoader.get(TestProperties.PLATFORM.toString());
+        String featureFilter = ConfigLoader.get(TestProperties.FEATURE.toString());
+
+        // ✅ Cross-platform safe paths
+        String testngFilePath = Paths.get("src", "test", "resources", "dynamic-testng.xml").toString();
+        String basePath = Paths.get("src", "test", "java", "com", "example", "modules").toString() + File.separator;
+
         List<XmlClass> xmlClasses = new ArrayList<>();
 
         if (suiteFilter == null)
@@ -36,9 +33,6 @@ public class DynamicSuiteGenerator {
         if (platformFilter == null)
             platformFilter = "ALL";
 
-        
-
-        // ✅ Create new TestNG suite
         XmlSuite suite = new XmlSuite();
         suite.setName("DynamicSuite");
         suite.setParallel(XmlSuite.ParallelMode.CLASSES);
@@ -47,42 +41,42 @@ public class DynamicSuiteGenerator {
         XmlTest test = new XmlTest(suite);
         test.setName("DynamicGeneratedTests");
 
-        // ✅ Scan test package
-        // String basePackage = "com.example.tests.modules." + suiteFilter.toLowerCase()
-        // + "." + platformFilter.toLowerCase();
-        String testModulePath = basePath + suiteFilter.toLowerCase() + "/" + platformFilter.toLowerCase();
+        // ✅ Build test module path
+        String testModulePath = basePath + suiteFilter.toLowerCase() + File.separator + platformFilter.toLowerCase();
         File testFolder = new File(testModulePath);
         if (!testFolder.exists()) {
             throw new RuntimeException("Test folder not found: " + testModulePath);
         }
+
         List<File> javaFiles = new ArrayList<>();
         collectJavaFilesInFolderAndItsSubFolders(testFolder, javaFiles);
         collectTestClassesAndMethodsByFeatureName(javaFiles, featureFilter, xmlClasses);
         test.setXmlClasses(xmlClasses);
 
-        // ✅ Write testng.xml
+        // ✅ Write dynamic-testng.xml
         try (FileWriter writer = new FileWriter(testngFilePath)) {
             writer.write(suite.toXml());
         }
-
     }
 
     private static void collectTestClassesAndMethodsByFeatureName(List<File> javaFiles, String featureFilter,
             List<XmlClass> xmlClasses) throws ClassNotFoundException {
-        boolean featureMatch = false;
-        String className;
         for (File file : javaFiles) {
-            String relativePath = file.getPath().replace(File.separator, ".");
-            className = relativePath.substring(0, relativePath.length() - 5); // remove ".java"
+            // ✅ Use Paths and relative pathing instead of hardcoding
+            String relativePath = file.getPath()
+                    .replace(Paths.get("src", "test", "java").toString() + File.separator, "")
+                    .replace(File.separator, ".");
+            String className = relativePath.substring(0, relativePath.length() - 5); // strip ".java"
+
             Class<?> clazz = Class.forName(className);
             XmlClass xmlClass = new XmlClass(className);
 
-            // ✅ Check methods for @TestMeta
             for (Method method : clazz.getDeclaredMethods()) {
                 if (method.isAnnotationPresent(TestMeta.class)) {
                     TestMeta meta = method.getAnnotation(TestMeta.class);
 
-                    featureMatch = featureFilter.equals("ALL") || featureFilter.equalsIgnoreCase(meta.feature());
+                    boolean featureMatch = featureFilter.equals("ALL")
+                            || featureFilter.equalsIgnoreCase(meta.feature());
 
                     if (featureMatch) {
                         xmlClass.getIncludedMethods().add(new XmlInclude(method.getName()));
