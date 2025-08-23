@@ -6,7 +6,7 @@ This project is an automation testing framework built with **Selenium**, **TestN
 
 - **Selenium WebDriver** for browser automation
 - **TestNG** for test orchestration and reporting
-- **Log4j** for flexible logging
+- **Log4j2** for flexible logging
 - **ExtentReports** for rich HTML test reports
 - **RestAssured** for API testing
 - Modular structure for easy test management and extension
