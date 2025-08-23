@@ -18,4 +18,4 @@ cat src/test/resources/dynamic-testng.xml
 
 # Step 2: Run Maven Test
 echo "=== Executing Tests ==="
-mvn test -DsuiteXmlFile="src/test/resources/dynamic-testng.xml" 
+mvn test -DsuiteXmlFile=src/test/resources/dynamic-testng.xml
