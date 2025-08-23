@@ -3,9 +3,9 @@ package com.example.tests.modules.login.web.loginTest2;
 import org.testng.annotations.Test;
 
 import com.example.base_test.BaseTest;
+import com.example.executions.TestMeta;
 import com.example.pages.HomePage;
 import com.example.pages.LoginPage;
-import com.example.tests.executions.TestMeta;
 
 public class LoginTest2 extends BaseTest {
     // test logic

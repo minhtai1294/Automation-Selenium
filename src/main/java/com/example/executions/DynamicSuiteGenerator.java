@@ -1,4 +1,4 @@
-package com.example.tests.executions;
+package com.example.executions;
 
 import java.io.File;
 import java.io.FileWriter;

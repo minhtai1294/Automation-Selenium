@@ -10,7 +10,7 @@ echo "=== Running tests for Suite: $SUITE_NAME, Platform: $PLATFORM, Feature: $F
 
 # Step 1: Generate Dynamic TestNG Suite
 echo "=== Generating Dynamic TestNG Suite ==="
-mvn exec:java -Dexec.mainClass="com.example.tests.executions.DynamicSuiteGenerator" -Dexec.args="$SUITE_NAME $PLATFORM $FEATURE"
+mvn exec:java -Dexec.mainClass="com.example.executions.DynamicSuiteGenerator" -Dexec.args="$SUITE_NAME $PLATFORM $FEATURE"
 
 # Step 2: Run Maven Test
 echo "=== Executing Tests ==="
