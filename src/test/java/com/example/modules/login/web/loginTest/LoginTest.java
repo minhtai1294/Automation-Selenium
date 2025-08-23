@@ -1,4 +1,4 @@
-package com.example.tests.modules.login.web.loginTest;
+package com.example.modules.login.web.loginTest;
 
 import org.testng.annotations.Test;
 

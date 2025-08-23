@@ -9,5 +9,8 @@ public enum TestProperties {
     IS_HEADLESS,
     HUB_URL,
     TEST_ENVIRONMENT,
+    SUITE_NAME,
+    PLATFORM,
+    FEATURE,
     EXECUTION_TYPE;
 }

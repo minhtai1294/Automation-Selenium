@@ -1,4 +1,4 @@
-package com.example.tests.modules.login.api;
+package com.example.modules.login.api;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;

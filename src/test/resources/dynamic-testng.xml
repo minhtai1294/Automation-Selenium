@@ -3,18 +3,18 @@
 <suite thread-count="3" parallel="classes" name="DynamicSuite">
   <test thread-count="3" parallel="classes" name="DynamicGeneratedTests">
     <classes>
-      <class name="com.example.tests.modules.login.web.loginTest.LoginTest">
+      <class name="com.example.modules.login.web.loginTest.LoginTest">
         <methods>
           <include name="testLogin1"/>
         </methods>
-      </class> <!-- com.example.tests.modules.login.web.loginTest.LoginTest -->
-      <class name="com.example.tests.modules.login.web.loginTest2.LoginTest2">
+      </class> <!-- com.example.modules.login.web.loginTest.LoginTest -->
+      <class name="com.example.modules.login.web.loginTest2.LoginTest2">
         <methods>
-          <include name="testLogin5"/>
           <include name="testLogin1"/>
           <include name="testLogin6"/>
+          <include name="testLogin5"/>
         </methods>
-      </class> <!-- com.example.tests.modules.login.web.loginTest2.LoginTest2 -->
+      </class> <!-- com.example.modules.login.web.loginTest2.LoginTest2 -->
     </classes>
   </test> <!-- DynamicGeneratedTests -->
 </suite> <!-- DynamicSuite -->

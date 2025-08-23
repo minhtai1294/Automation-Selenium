@@ -1,15 +1,17 @@
-package com.example.tests.modules.login.web.loginTest2;
+package com.example.modules.login.web.loginTest2;
 
 import org.testng.annotations.Test;
 
 import com.example.base_test.BaseTest;
+import com.example.executions.TestMeta;
 import com.example.pages.HomePage;
 import com.example.pages.LoginPage;
 
-public class LoginTest3 extends BaseTest {
+public class LoginTest2 extends BaseTest {
     // test logic
 
     @Test(dataProvider = "loginData")
+    @TestMeta(feature = "Login")
     public void testLogin1(String email, String password) {
 
         HomePage homePage = new HomePage();
@@ -43,11 +45,13 @@ public class LoginTest3 extends BaseTest {
     // }
 
     @Test(dataProvider = "loginData")
+    @TestMeta(feature = "Login")
     public void testLogin5(String email, String password) {
         log().info("555");
     }
 
     @Test(dataProvider = "loginData")
+    @TestMeta(feature = "Login")
     public void testLogin6(String email, String password) {
         log().info("666");
     }

@@ -125,6 +125,17 @@
         </systemPropertyVariables>
         </configuration>
       </plugin>
+
+      <!-- Exec Plugin to run Java classes -->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>3.5.1</version>
+        <configuration>
+          <mainClass>com.example.executions.DynamicSuiteGenerator</mainClass>
+          <classpathScope>test</classpathScope> <!-- add test classes -->
+        </configuration>
+      </plugin>
     </plugins>
   </build>
 </project>

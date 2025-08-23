@@ -14,6 +14,7 @@ import org.testng.xml.XmlSuite;
 import org.testng.xml.XmlTest;
 
 import com.example.configs.ConfigLoader;
+import com.example.configs.TestProperties;
 import com.example.utils.LogUtils;
 
 /**
@@ -22,13 +23,12 @@ import com.example.utils.LogUtils;
 public class DynamicSuiteGenerator {
 
     public static void main(String[] args) throws Exception {
-        LogUtils log = new LogUtils();
         // ✅ Read filters from environment variables
-        String suiteFilter = ConfigLoader.get("SUITE_NAME"); // e.g., "Login"
-        String platformFilter = ConfigLoader.get("PLATFORM"); // e.g., "web"
-        String featureFilter = ConfigLoader.get("FEATURE"); // e.g., "LoginFeature"
+        String suiteFilter = ConfigLoader.get(TestProperties.SUITE_NAME.toString()); // e.g., "Login"
+        String platformFilter = ConfigLoader.get(TestProperties.PLATFORM.toString()); // e.g., "web"
+        String featureFilter = ConfigLoader.get(TestProperties.FEATURE.toString()); // e.g., "LoginFeature"
         String testngFilePath = "src\\test\\resources\\dynamic-testng.xml";
-        String basePath = "src/test/java/com/example/tests/modules/";
+        String basePath = "src/test/java/com/example/modules/";
         List<XmlClass> xmlClasses = new ArrayList<>();
 
         if (suiteFilter == null)
@@ -36,8 +36,7 @@ public class DynamicSuiteGenerator {
         if (platformFilter == null)
             platformFilter = "ALL";
 
-        log.info("=== DynamicSuiteGenerator ===");
-        log.info("Filter: Suite=" + suiteFilter + ", Platform=" + platformFilter);
+        
 
         // ✅ Create new TestNG suite
         XmlSuite suite = new XmlSuite();
@@ -66,7 +65,6 @@ public class DynamicSuiteGenerator {
             writer.write(suite.toXml());
         }
 
-        log.info("✅ dynamic-testng.xml generated successfully!");
     }
 
     private static void collectTestClassesAndMethodsByFeatureName(List<File> javaFiles, String featureFilter,
