@@ -72,14 +72,6 @@ Logging is configured via Log4j (org.apache.logging.log4j). You can adjust loggi
 - Logging utilities: `com.example.utils.LogUtils`
 - Reporting integration: ExtentReports via custom listeners
 
-## Contributing
-
-Feel free to fork the repository and submit pull requests.
-
-## License
-
-This project is licensed under the MIT License.
-
 ---
 
 *Automation-Selenium: Fast, reliable, and maintainable test automation for web and API projects.*
