@@ -16,7 +16,7 @@ public class TestAPISample extends BaseAPITest {
     @Test
     public void testGetPokemonAbility() {
         ApiRequestFactory apiClient = new ApiRequestFactory();
-        log().info("Testing GET Pokemon Ability API");
+        log.info("Testing GET Pokemon Ability API");
         apiClient.setBaseUrl("https://pokeapi.co");
         Response response = apiClient.call(ApiEndpoints.GET_POKEMON_ABILITY, "battle-armor");
 
@@ -26,7 +26,7 @@ public class TestAPISample extends BaseAPITest {
     @Test
     public void testLocalHostApiGetTasks() {
         ApiRequestFactory apiClient = new ApiRequestFactory();
-        log().info("Testing GET tasks API on localhost");
+        log.info("Testing GET tasks API on localhost");
         Response response = apiClient.withHeaders(DefaultHeaders.get()).call(ApiEndpoints.GET_TASKS.getMethod(), ApiEndpoints.GET_TASKS.getPath());
         Assert.assertEquals(response.statusCode(), 200);
     }
@@ -36,12 +36,12 @@ public class TestAPISample extends BaseAPITest {
         ApiRequestFactory apiClient = new ApiRequestFactory();
         WaitUtils.waitForSeconds(20);
 
-        log().info("Testing GET tasks API on localhost with rate limit of 5 requests");
+        log.info("Testing GET tasks API on localhost with rate limit of 5 requests");
         for (int i = 0; i < 6; i++) {
             Response response = apiClient.withHeaders(DefaultHeaders.get()).call(ApiEndpoints.GET_TASKS.getMethod(), ApiEndpoints.GET_TASKS.getPath());
-            log().info(response.getStatusCode() + " " + response.asPrettyString());
+            log.info(response.getStatusCode() + " " + response.asPrettyString());
             if (i == 5) {
-                log().info("This is the 6th request, expecting rate limit exceeded");
+                log.info("This is the 6th request, expecting rate limit exceeded");
                 Assert.assertEquals(response.statusCode(), 429);
             } else
                 Assert.assertEquals(response.statusCode(), 200);
@@ -52,9 +52,9 @@ public class TestAPISample extends BaseAPITest {
     public void testCreateNewTasksSuccessfully(String taskName) {
         ApiRequestFactory apiClient = new ApiRequestFactory();
 
-        log().info("Testing GET tasks API on localhost");
+        log.info("Testing GET tasks API on localhost");
         Response response = apiClient.withHeaders(DefaultHeaders.get()).withBody(String.format("{\"title\":\"%s\"}", taskName)).call(ApiEndpoints.POST_TASKS.getMethod(), ApiEndpoints.POST_TASKS.getPath());
-        log().info(response.getStatusCode() + " " + response.asPrettyString());
+        log.info(response.getStatusCode() + " " + response.asPrettyString());
         Assert.assertEquals(response.statusCode(), 201);
     }
 
@@ -62,9 +62,9 @@ public class TestAPISample extends BaseAPITest {
     public void testCreateNewTasks400(String taskName) {
         ApiRequestFactory apiClient = new ApiRequestFactory();
 
-        log().info("Testing GET tasks API on localhost");
+        log.info("Testing GET tasks API on localhost");
         Response response = apiClient.withHeaders(DefaultHeaders.get()).withBody("{\"title\":null}").call(ApiEndpoints.POST_TASKS.getMethod(), ApiEndpoints.POST_TASKS.getPath());
-        log().info(response.getStatusCode() + " " + response.asPrettyString());
+        log.info(response.getStatusCode() + " " + response.asPrettyString());
         Assert.assertEquals(response.statusCode(), 400);
     }
 
@@ -72,9 +72,9 @@ public class TestAPISample extends BaseAPITest {
     public void testCreateNewTasks422(String taskName) {
         ApiRequestFactory apiClient = new ApiRequestFactory();
 
-        log().info("Testing GET tasks API on localhost");
+        log.info("Testing GET tasks API on localhost");
         Response response = apiClient.withHeaders(DefaultHeaders.get()).withBody(String.format("{\"title\":\"%s\"}", taskName + System.currentTimeMillis() + System.currentTimeMillis())).call(ApiEndpoints.POST_TASKS.getMethod(), ApiEndpoints.POST_TASKS.getPath());
-        log().info(response.getStatusCode() + " " + response.asPrettyString());
+        log.info(response.getStatusCode() + " " + response.asPrettyString());
         Assert.assertEquals(response.statusCode(), 422);
     }
 }

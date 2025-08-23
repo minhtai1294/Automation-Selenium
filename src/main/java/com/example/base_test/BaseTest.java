@@ -15,23 +15,14 @@ import com.example.web.DriverFactory;
 
 @Listeners(com.example.reports.ExtentTestListener.class)
 public class BaseTest {
-    public static ThreadLocal<LogUtils> log = new ThreadLocal<>();
+    public static LogUtils log = new LogUtils();
     public static final Logger log1 = LogManager.getLogger(BaseTest.class);
-
-    public LogUtils log() {
-        return log.get();
-    }
-
-    // public Logger log1() {
-    //     return log1.get();
-    // }
 
     @BeforeMethod
     public void setup(Method method) {
         String testName = method.getName(); // or use result.getMethod().getMethodName()
         ThreadContext.put("testName", testName);
-        log.set(new LogUtils());
-        log().info("===== Test started: " + method.getName() + " =====");
+        log.info("===== Test started: " + method.getName() + " =====");
         // log1.set(LogManager.getLogger(BaseTest.class));
         // log1().info("===== Test started: " + method.getName() + " =====");
         DriverFactory.init();
