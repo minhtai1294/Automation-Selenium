@@ -17,6 +17,7 @@
     <webdrivermanager.version>6.2.0</webdrivermanager.version>
     <log4j.version>2.25.1</log4j.version>
     <extent.version>5.1.2</extent.version>
+    <testSuiteXmlFile>src/test/resources/testng.xml</testSuiteXmlFile>
   </properties>
 
   <dependencies>
@@ -111,7 +112,7 @@
         <version>3.0.0-M9</version>
         <configuration>
           <suiteXmlFiles>
-            <suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
+            <suiteXmlFile>${testSuiteXmlFile}</suiteXmlFile>
           </suiteXmlFiles>
           <systemPropertyVariables>
             <API_BASE_URL>${env.API_BASE_URL}</API_BASE_URL>
