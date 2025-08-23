@@ -28,7 +28,7 @@ public class DynamicSuiteGenerator {
         String platformFilter = ConfigLoader.get(TestProperties.PLATFORM.toString()); // e.g., "web"
         String featureFilter = ConfigLoader.get(TestProperties.FEATURE.toString()); // e.g., "LoginFeature"
         String testngFilePath = "src\\test\\resources\\dynamic-testng.xml";
-        String basePath = "src/test/java/com/example/modules/";
+        String basePath = "com/example/modules/";
         List<XmlClass> xmlClasses = new ArrayList<>();
 
         if (suiteFilter == null)
@@ -72,7 +72,7 @@ public class DynamicSuiteGenerator {
         boolean featureMatch = false;
         String className;
         for (File file : javaFiles) {
-            String relativePath = file.getPath().replace("src\\test\\java\\", "").replace(File.separator, ".");
+            String relativePath = file.getPath().replace(File.separator, ".");
             className = relativePath.substring(0, relativePath.length() - 5); // remove ".java"
             Class<?> clazz = Class.forName(className);
             XmlClass xmlClass = new XmlClass(className);
