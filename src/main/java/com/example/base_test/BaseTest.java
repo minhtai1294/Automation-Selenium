@@ -9,28 +9,24 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Listeners;
-
-import com.example.utils.LogUtils;
 import com.example.web.DriverFactory;
 
 @Listeners(com.example.utils.reports.ExtentTestListener.class)
 public class BaseTest {
-    public static Logger log = LogManager.getLogger(BaseTest.class);
+    public Logger log = LogManager.getLogger(this.getClass());
 
     @BeforeMethod
     public void setup(Method method) {
         String testName = method.getName(); // or use result.getMethod().getMethodName()
         ThreadContext.put("testName", testName);
         log.info("===== Test started: " + method.getName() + " =====");
-        // log1.set(LogManager.getLogger(BaseTest.class));
-        // log1().info("===== Test started: " + method.getName() + " =====");
         DriverFactory.init();
     }
 
     @AfterMethod
     public void teardown(Method method) {
         ThreadContext.clearAll();
-        // log1().info("===== Test finished: " + method.getName() + " =====");
+        log.info("===== Test finished: " + method.getName() + " =====");
         DriverFactory.quit();
     }
 

@@ -6,13 +6,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import com.example.base_test.BaseTest;
 import com.example.web.DriverFactory;
 
 public class ElementActions {
 
-    private Logger log = LogManager.getLogger(ElementActions.class);
-    // private static final Logger log = LogManager.getLogger(ElementActions.class);
+    private Logger log = LogManager.getLogger(this.getClass());
     private WebDriver driver;
 
     public ElementActions() {

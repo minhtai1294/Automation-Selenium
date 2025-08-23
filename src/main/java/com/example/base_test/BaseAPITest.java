@@ -9,11 +9,9 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 
-import com.example.utils.LogUtils;
-
 //@Listeners(com.example.reports.ExtentTestListener.class)
 public class BaseAPITest {
-    public static Logger log = LogManager.getLogger(BaseTest.class);
+    public Logger log = LogManager.getLogger(this.getClass());
 
     @BeforeMethod
     public void setup(Method method) {

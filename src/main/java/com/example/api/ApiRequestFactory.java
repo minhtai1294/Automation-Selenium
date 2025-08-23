@@ -1,19 +1,18 @@
 package com.example.api;
 
-import io.restassured.specification.RequestSpecification;
-import io.restassured.RestAssured;
-import io.restassured.http.ContentType;
-import io.restassured.response.Response;
-
 import java.util.Map;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.example.api.constants.ApiRoute;
-import com.example.base_test.BaseTest;
-import com.example.configs.*;
-import com.example.utils.LogUtils;
+import com.example.configs.ConfigLoader;
+import com.example.configs.TestProperties;
+
+import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
 
 public class ApiRequestFactory {
 
@@ -21,7 +20,7 @@ public class ApiRequestFactory {
     private Object body;
     private Map<String, String> headers;
     private Map<String, Object> queryParams;
-    private Logger log = LogManager.getLogger(ApiRequestFactory.class);
+    private Logger log = LogManager.getLogger(this.getClass());
 
 
     private String API_BASE_URL = ConfigLoader.get(TestProperties.API_BASE_URL.toString()) != null ? ConfigLoader.get(TestProperties.API_BASE_URL.toString())
