@@ -13,6 +13,9 @@ echo "=== Generating Dynamic TestNG Suite ==="
 mvn test-compile exec:java
 mvn exec:java -Dexec.mainClass="com.example.executions.DynamicSuiteGenerator" -Dexec.args="$SUITE_NAME $PLATFORM $FEATURE"
 
+echo "📄 Printing dynamic-testng.xml content..."
+cat src/test/resources/dynamic-testng.xml
+
 # Step 2: Run Maven Test
 echo "=== Executing Tests ==="
 mvn test -DsuiteXmlFile="src/test/resources/dynamic-testng.xml" 
