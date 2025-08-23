@@ -1,14 +1,17 @@
 package com.example.utils;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import com.example.base_test.BaseTest;
 import com.example.web.DriverFactory;
 
 public class ElementActions {
 
-    private static final LogUtils log = new LogUtils();
+    private Logger log = LogManager.getLogger(ElementActions.class);
     // private static final Logger log = LogManager.getLogger(ElementActions.class);
     private WebDriver driver;
 

@@ -1,8 +1,9 @@
 package com.example.utils;
 
 import com.aventstack.extentreports.Status;
+import com.example.utils.reports.ExtentTestListener;
 import com.aventstack.extentreports.ExtentTest;
-import com.example.reports.ExtentTestListener;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

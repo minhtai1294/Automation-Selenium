@@ -13,10 +13,9 @@ import org.testng.annotations.Listeners;
 import com.example.utils.LogUtils;
 import com.example.web.DriverFactory;
 
-@Listeners(com.example.reports.ExtentTestListener.class)
+@Listeners(com.example.utils.reports.ExtentTestListener.class)
 public class BaseTest {
-    public static LogUtils log = new LogUtils();
-    public static final Logger log1 = LogManager.getLogger(BaseTest.class);
+    public static Logger log = LogManager.getLogger(BaseTest.class);
 
     @BeforeMethod
     public void setup(Method method) {

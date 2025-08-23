@@ -2,6 +2,8 @@ package com.example.base_test;
 
 import java.lang.reflect.Method;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.ThreadContext;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -11,7 +13,7 @@ import com.example.utils.LogUtils;
 
 //@Listeners(com.example.reports.ExtentTestListener.class)
 public class BaseAPITest {
-    public static LogUtils log = new LogUtils();
+    public static Logger log = LogManager.getLogger(BaseTest.class);
 
     @BeforeMethod
     public void setup(Method method) {

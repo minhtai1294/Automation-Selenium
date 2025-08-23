@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="WARN">
   <Appenders>
+    <ExtentAppender name="ExtentAppender">
+      <PatternLayout pattern="%X{testName} [%t] %-5level %c{1}.%M(Line %L) - %msg%n"/>
+    </ExtentAppender>
     <Console name="Console" target="SYSTEM_OUT">
       <PatternLayout pattern="%X{testName} [%t] %-5level %c{1}.%M(Line %L) - %msg%n"/>
     </Console>
@@ -10,6 +13,7 @@
     <!-- Set logging level and package -->
     <Root level="info">
       <AppenderRef ref="Console"/>
+      <AppenderRef ref="ExtentAppender"/>
     </Root>
   </Loggers>
 </Configuration>

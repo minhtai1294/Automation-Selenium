@@ -7,7 +7,11 @@ import io.restassured.response.Response;
 
 import java.util.Map;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.example.api.constants.ApiRoute;
+import com.example.base_test.BaseTest;
 import com.example.configs.*;
 import com.example.utils.LogUtils;
 
@@ -17,7 +21,8 @@ public class ApiRequestFactory {
     private Object body;
     private Map<String, String> headers;
     private Map<String, Object> queryParams;
-    LogUtils log = new LogUtils();
+    private Logger log = LogManager.getLogger(ApiRequestFactory.class);
+
 
     private String API_BASE_URL = ConfigLoader.get(TestProperties.API_BASE_URL.toString()) != null ? ConfigLoader.get(TestProperties.API_BASE_URL.toString())
             : "https://pokeapi.co";
