@@ -2,9 +2,9 @@
 set -e  # Exit immediately if a command fails
 
 # --- Read from Jenkins environment variables or CLI arguments ---
-SUITE_NAME=${SuiteName:-"defaultSuite"}  # Fall back to default if not provided
-PLATFORM=${Platform:-"defaultWeb"}              # Fall back to 'web'
-FEATURE=${Feature:-"default"}                # Comma-separated list of features
+SUITE_NAME=${SUITE_NAME:-"defaultSuite"}
+PLATFORM=${PLATFORM:-"defaultWeb"}
+FEATURE=${FEATURE:-"default"}
 
 echo "=== Running tests for Suite: $SUITE_NAME, Platform: $PLATFORM, Feature: $FEATURE ==="
 
